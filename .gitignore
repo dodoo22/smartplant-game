@@ -1,0 +1,15 @@
+# --- frontend (Next.js) ---
+frontend/node_modules
+frontend/.next
+frontend/.turbo
+frontend/.env
+frontend/.env.local
+
+# --- backend (Python / Flask) ---
+backend/.venv
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+# macOS
+.DS_Store

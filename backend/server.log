@@ -1,0 +1,701 @@
+[PUMP] init ok pin=27 active_low=True (idle=INPUT)
+[DEBUG] init_pump ok=True msg=ok mock=False
+[DEBUG] routes: ['/static/<path:filename>', '/status', '/water', '/camera/capture', '/camera/stream', '/photos/<path:filename>']
+[DEBUG] app starting...
+[DEBUG] initializing camera singleton
+[0:10:31.063871620] [4210] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:330 [0mlibcamera v0.5.2+99-bfd68f78
+[0:10:31.086217234] [4228] [1;32m INFO [1;37mIPAProxy [1;34mipa_proxy.cpp:180 [0mUsing tuning file /usr/share/libcamera/ipa/rpi/vc4/ov5647.json
+[0:10:31.092075418] [4228] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:220 [0mAdding camera '/base/soc/i2c0mux/i2c@1/ov5647@36' for pipeline handler rpi/vc4
+[0:10:31.092157430] [4228] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:440 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media2
+[0:10:31.092200371] [4228] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1107 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[0:10:31.098681767] [4210] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1215 [0mconfiguring streams: (0) 2592x1944-BGR888/sRGB (1) 2592x1944-SGBRG10_CSI2P/RAW
+[0:10:31.099136954] [4228] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:615 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 2592x1944-SGBRG10_1X10/RAW - Selected unicam format: 2592x1944-pGAA/RAW
+[DEBUG] camera initialized
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://172.20.10.2:8000
+Press CTRL+C to quit
+[0:10:32.204202770] [4228] [1;33m WARN [1;37mV4L2 [1;34mv4l2_videodevice.cpp:2155 [0;32m/dev/video0[14:cap]: [0mDequeue timer of 1000000.00us has expired!
+[0:10:32.204492100] [4228] [1;31mERROR [1;37mRPI [1;34mpipeline_base.cpp:1346 [0mCamera frontend has timed out!
+[0:10:32.204520616] [4228] [1;31mERROR [1;37mRPI [1;34mpipeline_base.cpp:1347 [0mPlease check that your camera sensor connector is attached securely.
+[0:10:32.204535282] [4228] [1;31mERROR [1;37mRPI [1;34mpipeline_base.cpp:1348 [0mAlternatively, try another cable and/or sensor.
+172.20.10.3 - - [14/Dec/2025 07:35:54] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:35:55] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:35:57] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:35:58] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:35:58] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:35:59] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:00] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:01] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:02] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:03] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:04] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:05] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:06] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:07] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:07] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:08] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:08] "OPTIONS /water HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:09] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:09] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:10] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:10] "POST /water HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:11] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:12] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:13] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:13] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:14] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:15] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:16] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:18] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:19] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:20] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:21] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:21] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:22] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:23] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:24] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:25] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:25] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:26] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:27] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:28] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:29] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:29] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:30] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:31] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:32] "GET /status HTTP/1.1" 200 -
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+172.20.10.3 - - [14/Dec/2025 07:36:33] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:33] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:34] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:35] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:36] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:37] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:37] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:38] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:39] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:40] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:41] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:41] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:42] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:43] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:44] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:45] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:46] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:47] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:48] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:49] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:50] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:51] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:52] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:53] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:53] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:54] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:55] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:56] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:57] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:57] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:59] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:36:59] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:00] "GET /status HTTP/1.1" 200 -
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+[CAPTURE] Picamera2 singleton try 1/3
+172.20.10.3 - - [14/Dec/2025 07:37:01] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:01] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:02] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:03] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:04] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:05] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:05] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:06] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:07] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:08] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:09] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:10] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:11] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:12] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:13] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:14] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:15] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:18] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:19] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:20] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:21] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:22] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:23] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:24] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:25] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:26] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:27] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:28] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:29] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:30] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:31] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:32] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:33] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:34] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:35] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:36] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:37] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:38] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:40] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:41] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:41] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:42] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:43] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:44] "GET /status HTTP/1.1" 200 -
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+172.20.10.3 - - [14/Dec/2025 07:37:45] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:46] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:47] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:48] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:49] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:50] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:51] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:52] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:53] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:54] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:55] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:57] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:57] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:58] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:37:59] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:00] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:01] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:02] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:03] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:04] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:05] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:06] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:07] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:08] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:11] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:11] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:12] "OPTIONS /camera/capture HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:12] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:13] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:13] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:14] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:15] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:16] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:18] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:19] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:20] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:21] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:21] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:22] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:24] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:24] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:25] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:25] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:26] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:27] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:28] "GET /status HTTP/1.1" 200 -
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+172.20.10.3 - - [14/Dec/2025 07:38:29] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:29] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:30] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:31] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:32] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:33] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:34] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:35] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:36] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:38] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:38] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:39] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:40] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:41] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:42] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:43] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:44] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:45] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:46] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:47] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:48] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:49] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:50] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:51] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:52] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:53] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:54] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:55] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:56] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:57] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:59] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:38:59] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:00] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:01] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:02] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:03] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:04] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:05] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:06] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:07] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:08] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:09] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:10] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:12] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:12] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:13] "GET /status HTTP/1.1" 200 -
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+👉 提示：請用 'i2cdetect -y 1' 確認位址是否為 0x23 或 0x5C；檢查 I2C 是否啟用、接線與 3.3V 供電。
+BH1750 read error: [Errno 5] Input/output error
+172.20.10.3 - - [14/Dec/2025 07:39:14] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:15] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:17] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:18] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:19] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:20] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:21] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:22] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:23] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:24] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:25] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:26] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:27] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:28] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:29] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:39:30] "GET /status HTTP/1.1" 200 -
+172.20.10.3 - - [14/Dec/2025 07:40:14] "GET /status HTTP/1.1" 200 -
