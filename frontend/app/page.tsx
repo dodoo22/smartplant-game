@@ -321,17 +321,10 @@ export default function PlantCareGame() {
 
   return (
     <div className="min-h-screen bg-plant-bg flex items-center justify-center p-4">
-      <div className="w-full max-w-md aspect-[9/19.5] bg-plant-bg rounded-[3rem] shadow-2xl border-8 border-black relative overflow-hidden flex flex-col scale-[0.82] origin-center">
-        {/* status bar */}
-        <div className="h-12 flex items-center justify-between px-8 pt-2">
-          <span className="text-sm font-medium text-foreground/70">9:41</span>
-          <div className="w-24 h-7 bg-black rounded-full" />
-          <div className="flex gap-1 items-center">
-            <div className="w-4 h-3 border border-foreground/70 rounded-sm" />
-            <div className="w-4 h-3 border border-foreground/70 rounded-sm" />
-            <div className="w-4 h-3 border border-foreground/70 rounded-sm" />
-          </div>
-        </div>
+  {/* phone frame applied only on md+; mobile gets a plain full-width layout */}
+  {/* slightly taller on mobile so user can scroll and collapse the URL area */}
+  <div className="w-full max-w-md bg-plant-bg relative overflow-hidden flex flex-col p-4 min-h-[760px] md:aspect-[9/19.5] md:rounded-[3rem] md:shadow-2xl md:border-8 md:border-black md:scale-[0.82] md:origin-center">
+        {/* status bar removed for mobile: simplified layout (simulated time/battery removed) */}
 
         {/* 上方中間：相機按鈕 */}
         <div className="absolute top-20 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2">
