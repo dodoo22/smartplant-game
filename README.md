@@ -27,6 +27,7 @@ Iot final project
 ---
 
 ## 系統架構
+```text
 [ Browser (Next.js) ]
         │
         │ HTTP (REST API)
