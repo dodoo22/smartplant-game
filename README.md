@@ -27,22 +27,24 @@ Iot final project
 ---
 
 ## 系統架構
+## 系統架構
+
 ```text
 [ Browser (Next.js) ]
-        │
-        │ HTTP (REST API)
-        ▼
+        |
+        | HTTP (REST API)
+        v
 [ Flask Backend (Raspberry Pi) ]
-        │
-        ├── Sensors (GPIO / I2C)
-        ├── Relay Control
-        ├── Camera (libcamera)
-        ▼
+        |
+        |-- Sensors (GPIO / I2C)
+        |-- Relay Control
+        |-- Camera (libcamera)
+        v
 [ Physical World ]
-  ├─ Plant
-  ├─ Soil
-  └─ Water Pump
-```text
+        |-- Plant
+        |-- Soil
+        |-- Water Pump
+
 ---
 
 ## 硬體設備與接線說明
