@@ -8,10 +8,11 @@ Iot final project
 2. [系統架構](#系統架構)
 3. [硬體設備與接線說明](#硬體設備與接線說明)
 4. [系統功能說明](#系統功能說明)
-5. [檔案結構說明](#檔案結構說明)
-6. [安裝與執行方式](#安裝與執行方式)
-7. [測試方式](#測試方式)
-8. [未來改進方向](#未來改進方向)
+5. [軟體環境](#軟體環境)
+6. [檔案結構說明](#檔案結構說明)
+7. [安裝與執行方式](#安裝與執行方式)
+8. [測試方式](#測試方式)
+9. [未來改進方向](#未來改進方向)
 
 ---
 
@@ -70,37 +71,120 @@ Iot final project
 
 ## 系統功能說明
 系統主要功能包括：
-
 - 即時感測
-	•	溫度 / 空氣濕度（DHT11）
-	•	土壤濕度（Soil Moisture Sensor）
-	•	光照強度（BH1750 I2C）
-	•	觸控互動（Touch Sensor）
+  - 溫度 / 空氣濕度（DHT11）
+  - 土壤濕度（Soil Moisture Sensor）
+  - 光照強度（BH1750 I2C）
+  - 觸控互動（Touch Sensor）
+
 - 實體澆水控制
-	•	Web 按鈕 → Raspberry Pi → Relay → 12V 水幫浦
-	•	具備每日澆水上限與冷卻時間（Cooldown）
-	•	互動式前端介面
+  - Web 按鈕 → Raspberry Pi → Relay → 12V 水幫浦
+  - 具備每日澆水上限與冷卻時間（Cooldown）
+  - 互動式前端介面
+
 - 植物情緒狀態（口渴 / 開心 / 滿足 / 興奮）
-	•	澆水動畫、觸控加分、滿意度系統
-	•	Web UI 與實體感測同步
+  - 澆水動畫、觸控加分、滿意度系統
+  - Web UI 與實體感測同步
+
 - 相機拍照功能
-	•	Raspberry Pi Camera Module
-	•	從前端觸發拍照並顯示照片
+  - Raspberry Pi Camera Module
+  - 從前端觸發拍照並顯示照片
+
 - API Key 保護
-	•	澆水 / 拍照 API 需驗證金鑰
+  - 澆水 / 拍照 API 需驗證金鑰
+
 
 
 
 
 ---
+##軟體環境
+Backend（Raspberry Pi）
+- Python 3.11+
+- Flask
+- RPi.GPIO
+- libcamera
+- Flask-CORS
+- python-dotenv
+
+Frontend
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+
+---
 
 ## 檔案結構說明
 ```text
-project/
+smartplant/
+├── backend/
+│   ├── app.py
+│   ├── sensors.py
+│   ├── pump.py
+│   ├── camera.py
+│   └── .env
 │
-├─ main.py              # 主程式
-├─ test_dht22.py        # 溫溼度感測測試
-├─ test_soil_do.py      # 土壤濕度感測測試
-├─ test_relay.py        # 繼電器測試
-├─ test_pump.py         # 水泵測試
-├─ README.md
+├── frontend/
+│   ├── app/
+│   │   └── page.tsx
+│   ├── components/
+│   └── public/
+│
+└── README.md
+```
+環境變數設定：
+```text
+MOCK_SENSORS=0
+PUMP_MOCK=0
+
+WATER_API_KEY=Wp9fK3zR7mQ2xB8tL4vH1nC6yD0
+
+PUMP_PIN=27
+DHT_PIN=4
+
+DAILY_LIMIT_SEC=30
+COOLDOWN_SEC=60
+```
+##安裝與執行方式
+```text
+Backend（Raspberry Pi）
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+Frontend
+```text
+cd frontend
+npm install
+npm run dev
+```
+##測試方式
+1. 測試api
+   - 查看感測狀態
+   ```text
+   curl http://<PI_IP>:8000/status
+   ```
+   - 觸發澆水
+   ```text
+   curl -X POST http://<PI_IP>:8000/water \
+   -H "x-api-key: YOUR_KEY" \
+   -d "sec=2"
+   ```
+   - 拍照
+   ```text
+  curl -X POST http://<PI_IP>:8000/camera/capture \
+  -H "x-api-key: YOUR_KEY"
+   ```
+2. 測試檔用途
+
+| 檔名 | 功能說明 | 測試內容 | 備註 |
+|---|---|---|---|
+| `test_dht22.py` | 測試 DHT22 溫溼度感測器 | 讀取空氣溫度（°C）與濕度（%），確認感測器供電與資料傳輸正常 | 偶爾出現 checksum error 屬正常現象 |
+| `test_pump.py` | 測試水幫浦 / 繼電器控制流程 | GPIO 設為 OUTPUT 啟動幫浦，維持短時間後釋放為 INPUT | 確認幫浦不會上電即持續運轉 |
+| `test_relay.py` | 測試繼電器 HIGH / LOW 切換 | 手動切換 GPIO HIGH / LOW，觀察繼電器吸合與釋放 | 可聽到繼電器「喀」聲 |
+| `test_soil_do.py` | 測試土壤濕度感測器（DO） | 讀取 DO 腳位，高低電位代表乾燥 / 潮濕狀態 | 使用 DO 腳位，不需 ADC |
+   
+   
