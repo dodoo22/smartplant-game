@@ -27,10 +27,20 @@ Iot final project
 ---
 
 ## 系統架構
-系統主要由三個部分組成：
-1. **感測層**：溫溼度、土壤濕度、光照、觸控感測器
-2. **控制層**：Raspberry Pi 負責資料讀取與邏輯判斷
-3. **執行層**：繼電器控制水泵進行自動澆水
+[ Browser (Next.js) ]
+        │
+        │ HTTP (REST API)
+        ▼
+[ Flask Backend (Raspberry Pi) ]
+        │
+        ├── Sensors (GPIO / I2C)
+        ├── Relay Control
+        ├── Camera (libcamera)
+        ▼
+[ Physical World ]
+  ├─ Plant
+  ├─ Soil
+  └─ Water Pump
 
 ---
 
