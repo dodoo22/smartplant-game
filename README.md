@@ -23,10 +23,15 @@ Iot final project
 本系統主要應用於：
 - 初學者植物照護
 - 中小學自然科科教育互動
+- 遠距照顧植物者
 - IoT 與嵌入式系統學習
 
-裝置圖片：
+---
+**裝置圖片：**
+
 ![裝置圖片](images/helloplant.JPG)
+
+**demo影片：**
 
 ---
 
@@ -98,7 +103,7 @@ Iot final project
 
 
 ---
-##軟體環境
+## 軟體環境
 Backend（Raspberry Pi）
 - Python 3.11+
 - Flask
@@ -166,21 +171,21 @@ npm run dev
 ---
 ## 測試方式
 1. 測試api
-   - 查看感測狀態
+- 查看感測狀態
    ```text
    curl http://<PI_IP>:8000/status
    ```
-   - 觸發澆水
+- 觸發澆水
    ```text
    curl -X POST http://<PI_IP>:8000/water \
    -H "x-api-key: YOUR_KEY" \
    -d "sec=2"
    ```
-   - 拍照
-   ```text
+- 拍照
+  ```text
   curl -X POST http://<PI_IP>:8000/camera/capture \
   -H "x-api-key: YOUR_KEY"
-   ```
+  ```
 2. 測試檔用途
 
 | 檔名 | 功能說明 | 測試內容 | 備註 |
@@ -193,3 +198,9 @@ npm run dev
    
 ---
 ## 未來改進方向
+1. 我使用的土壤濕度計是DO數位輸出，這樣只能感測到乾與濕的切換。可以加上ADC換成AO類比輸出，可以測量土壤濕度的百分比進而用來透過程式調整不同植物喜好土壤濕度
+2. 我使用的relay無法透過程式調整LOW/HIGH，最後是透過調整GPIO IN/OUT解決的。建議可能可以買好一點的繼電器模組。
+3. 可嘗試結合 Raspberry Pi Camera 所拍攝的影像，
+- 利用影像辨識判斷葉片顏色或枯萎狀態
+- 結合感測器資料進行植物健康評估
+
