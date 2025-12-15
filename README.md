@@ -204,3 +204,10 @@ npm run dev
 - 利用影像辨識判斷葉片顏色或枯萎狀態
 - 結合感測器資料進行植物健康評估
 
+---
+## 參考資料
+1. Raspberry Pi Powered IoT Garden. Instructables, 2024. https://www.instructables.com/Raspberry-Pi-Powered-IOT-Garden/
+2. Building Smarter Farming Irrigation with Raspberry Pi and IoT. Raspberry Pi Foundation, 2023. https://www.raspberrypi.com/news/building-smarter-farming-irrigation-with-raspberry-pi-and-iot/
+3. The Application of Touch Sensor. YouTube Video, ID: wPbU09bvwr0. https://www.youtube.com/watch?v=wPbU09bvwr0
+
+
