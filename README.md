@@ -32,7 +32,7 @@ Iot final project
 ![裝置圖片](images/helloplant.JPG)
 
 **demo影片：**
-[![系統操作示範](images/video.jpg)]([https://youtu.be/a2GsV1feKWs])
+[![系統操作示範](images/video.jpg)](https://youtu.be/a2GsV1feKWs)
 
 ---
 
