@@ -24,6 +24,8 @@ Iot final project
 - 中小學自然科科教育互動
 - IoT 與嵌入式系統學習
 
+![系統架構圖](images/helloplant.JPG)
+
 ---
 
 ## 系統架構
