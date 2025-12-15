@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import { PlantCharacter } from "@/components/plant-character"
 import { SensorDisplay } from "@/components/sensor-display"
 import { ControlButtons } from "@/components/control-buttons"
@@ -59,6 +59,8 @@ export default function PlantCareGame() {
   // edge detection refs
   const lastTouchRef = useRef(false)
   const lastSoilHumidityRef = useRef<boolean | undefined>(undefined)
+  // ref mirror of soilHumidity so callbacks can read latest value without changing identity
+  const soilHumidityRef = useRef<boolean>(soilHumidity)
 
   // timer refs
   const waterTimeoutRef = useRef<number | null>(null)
@@ -300,6 +302,8 @@ export default function PlantCareGame() {
   }
 
   const handleCallInsects = () => {
+    // 防止在動畫進行中重複觸發
+    if (isPlayingAnimationRef.current) return
     setShowInsects(true)
     setIsPlayingAnimation(true)
     isPlayingAnimationRef.current = true
@@ -309,15 +313,20 @@ export default function PlantCareGame() {
     setHasCalledInsectsToday(true)
   }
 
-  const handleAnimationComplete = () => {
+  // keep a stable callback identity so child animation effect doesn't restart
+  useEffect(() => {
+    soilHumidityRef.current = soilHumidity
+  }, [soilHumidity])
+
+  const handleAnimationComplete = useCallback(() => {
     setShowInsects(false)
     setIsPlayingAnimation(false)
     isPlayingAnimationRef.current = false
     // ❤️ 愛心保持滿的，不清空（一天只能解一次任務）
     // ⏸️ 等待每日重置時再清空
-    setEmotion(deriveEmotionFromSoil(soilHumidity))
+    setEmotion(deriveEmotionFromSoil(soilHumidityRef.current))
     lastEmotionSetTimeRef.current = Date.now()
-  }
+  }, [])
 
   return (
     <div className="min-h-screen bg-plant-bg flex items-center justify-center p-4">
@@ -447,7 +456,8 @@ export default function PlantCareGame() {
             <div className="w-full mt-4">
               <button
                 onClick={handleCallInsects}
-                className="w-full py-3 bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                style={{ backgroundColor: 'color-mix(in oklab, var(--plant-border) 85%, var(--plant-accent) 15%)' }}
+                className="w-full py-3 text-white rounded-2xl font-medium shadow-lg transition-all duration-300 hover:opacity-90 active:scale-95 flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -457,7 +467,7 @@ export default function PlantCareGame() {
                     d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>招蜂引蝶</span>
+                <span>play</span>
               </button>
             </div>
           )}
