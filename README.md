@@ -24,7 +24,8 @@ Iot final project
 - 中小學自然科科教育互動
 - IoT 與嵌入式系統學習
 
-![系統架構圖](images/helloplant.JPG)
+裝置圖片：
+![裝置圖片](images/helloplant.JPG)
 
 ---
 
@@ -62,7 +63,7 @@ Iot final project
 各感測器皆透過 GPIO 腳位與 Raspberry Pi 連接，
 電源統一由 3.3V 或 5V 提供，並共用 GND。
 線路圖：
-
+![線路圖](images/howtoelectric.PNG)
 
 
 ---
@@ -87,6 +88,7 @@ Iot final project
 	•	從前端觸發拍照並顯示照片
 - API Key 保護
 	•	澆水 / 拍照 API 需驗證金鑰
+
 
 
 
