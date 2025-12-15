@@ -29,10 +29,20 @@ Iot final project
 ---
 **裝置圖片：**
 
-![裝置圖片](images/helloplant.JPG)
+<p align="center">
+  <img src="images/helloplant.JPG" width="800">
+</p>
+
+
+---
 
 **demo影片：**
-[![系統操作示範](images/video.jpg)](https://youtu.be/a2GsV1feKWs)
+<p align="center">
+  <a href="https://youtu.be/a2GsV1feKWs">
+    <img src="images/video.jpg" width="800">
+  </a>
+</p>
+
 
 ---
 
@@ -68,9 +78,21 @@ Iot final project
 - 攝影機模組 Raspberry Pi Camera
 
 各感測器皆透過 GPIO 腳位與 Raspberry Pi 連接，
-電源統一由 3.3V 或 5V 提供，並共用 GND。
-線路圖：
+電源統一由 3.3V 或 5V 提供，並共用GND。
+
+**線路圖：**
 ![線路圖](images/howtoelectric.PNG)
+
+**接線表：**
+| 功能 | 元件 | GPIO 腳位（BCM） | 實體腳位（J8） | 電源 | GND | 備註 |
+|---|---|---|---|---|---|---|
+| 溫溼度感測 | DHT22 | GPIO4 | Pin 7 | 3.3V | GND | 單線通訊，需上拉電阻 |
+| 土壤濕度感測 | Soil Moisture Sensor（DO） | GPIO17 | Pin 11 | 3.3V | GND | 數位輸出，高/低代表乾濕 |
+| 光照感測 | BH1750 | GPIO2 (SDA) / GPIO3 (SCL) | Pin 3 / 5 | 3.3V | GND | I2C 裝置 |
+| 觸控感測 | TTP223 | GPIO22 | Pin 15 | 3.3V | GND | 觸碰輸出 HIGH |
+| 繼電器控制 | Relay 模組（FL-3FF-S-Z） | GPIO27 | Pin 13 | 5V | GND | Active-Low 觸發 |
+| 水幫浦 | 12V DC Pump | 由 Relay 控制 | - | 外接 12V | 共地 | 不可直接接 GPIO |
+| 攝影機 | Raspberry Pi Camera | CSI 介面 | 排線 | 3.3V | - | 非 GPIO，使用 CSI |
 
 
 ---
