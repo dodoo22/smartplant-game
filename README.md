@@ -42,7 +42,7 @@ Iot final project
   ├─ Plant
   ├─ Soil
   └─ Water Pump
-text```
+```text
 ---
 
 ## 硬體設備與接線說明
