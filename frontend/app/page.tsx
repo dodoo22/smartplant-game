@@ -97,10 +97,12 @@ export default function PlantCareGame() {
     return isDry ? "thirsty" : "content"
   }
 
+  // Map raw lux -> simplified light level (0..3)
+  // Increased sensitivity: smaller lux changes move levels.
   const luxToLevel = (lux: number): number => {
-    if (lux <= 50) return 0
-    if (lux <= 1000) return 1
-    if (lux <= 10000) return 2
+    if (lux <= 10) return 0
+    if (lux <= 200) return 1
+    if (lux <= 2000) return 2
     return 3
   }
 
