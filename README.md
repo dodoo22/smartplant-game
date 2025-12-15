@@ -60,7 +60,8 @@ Iot final project
 各感測器皆透過 GPIO 腳位與 Raspberry Pi 連接，
 電源統一由 3.3V 或 5V 提供，並共用 GND。
 線路圖：
-![Uploading Gemini_Generated_Image_oex1r3oex1r3oex1.png…]()
+
+![Uploading Gemini_Generated_Image_oex1r3oex1r3oex1 2.PNG…]()
 
 
 ---
