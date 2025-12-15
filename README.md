@@ -183,26 +183,14 @@ npm run dev
    ```
 2. 測試檔用途
 
-檔名
-功能說明
-測試內容
-備註
-test_dht22.py
-測試 DHT22 溫溼度感測器
-讀取空氣溫度（°C）與濕度（%），確認感測器供電與資料傳輸正常
-偶爾出現 checksum error 屬正常現象
-test_pump.py
-測試水幫浦 / 繼電器控制流程
-GPIO 設為 OUTPUT 啟動幫浦，維持短時間後釋放為 INPUT
-確認幫浦不會上電即持續運轉
-test_relay.py
-測試繼電器 HIGH / LOW 切換
-手動切換 GPIO HIGH / LOW，觀察繼電器吸合與釋放
-可聽到繼電器「喀」聲
-test_soil_do.py
-測試土壤濕度感測器（DO）
-讀取 DO 腳位，高低電位代表乾燥 / 潮濕狀態
-使用 DO 腳位，不需 ADC
+## Test Scripts
+
+| 檔名 | 功能說明 | 測試內容 | 備註 |
+|---|---|---|---|
+| `test_dht22.py` | 測試 DHT22 溫溼度感測器 | 讀取空氣溫度（°C）與濕度（%），確認感測器供電與資料傳輸正常 | 偶爾出現 checksum error 屬正常現象 |
+| `test_pump.py` | 測試水幫浦 / 繼電器控制流程 | GPIO 設為 OUTPUT 啟動幫浦，維持短時間後釋放為 INPUT | 確認幫浦不會上電即持續運轉 |
+| `test_relay.py` | 測試繼電器 HIGH / LOW 切換 | 手動切換 GPIO HIGH / LOW，觀察繼電器吸合與釋放 | 可聽到繼電器「喀」聲 |
+| `test_soil_do.py` | 測試土壤濕度感測器（DO） | 讀取 DO 腳位，高低電位代表乾燥 / 潮濕狀態 | 使用 DO 腳位，不需 ADC |
 
    
 ---
