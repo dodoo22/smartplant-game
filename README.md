@@ -147,7 +147,8 @@ DAILY_LIMIT_SEC=30
 COOLDOWN_SEC=60
 ```
 ---
-##安裝與執行方式
+
+## 安裝與執行方式
 ```text
 Backend（Raspberry Pi）
 cd backend
@@ -163,7 +164,7 @@ npm install
 npm run dev
 ```
 ---
-##測試方式
+## 測試方式
 1. 測試api
    - 查看感測狀態
    ```text
