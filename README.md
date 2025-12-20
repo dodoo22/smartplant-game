@@ -1,4 +1,4 @@
-# 智慧植物照護系統 SmartPlant game
+# 智慧植物照護遊戲 SmartPlant game
 Iot final project
 
 ---
