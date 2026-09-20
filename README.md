@@ -5,6 +5,13 @@
 
 Iot final project
 
+**demo影片：**
+<p align="center">
+  <a href="https://youtu.be/a2GsV1feKWs">
+    <img src="images/video.jpg" width="800">
+  </a>
+</p>
+
 ---
 
 ## 目錄
@@ -35,16 +42,6 @@ Iot final project
 
 <p align="center">
   <img src="images/helloplant.JPG" width="800">
-</p>
-
-
----
-
-**demo影片：**
-<p align="center">
-  <a href="https://youtu.be/a2GsV1feKWs">
-    <img src="images/video.jpg" width="800">
-  </a>
 </p>
 
 
