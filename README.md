@@ -2,7 +2,7 @@
 
 Iot final project
 
-**把真實植物變成會互動的虛擬夥伴。Turn your real plant into a virtual pet.**  
+**把真實植物變成會互動的虛擬夥伴。**  
 **Turn your real plant into a virtual pet.**  
 
 **demo影片：**
