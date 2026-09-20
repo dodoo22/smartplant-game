@@ -1,135 +1,129 @@
-# SmartPlant Game
-
-<p align="center">
-  <b>把真實植物變成會互動的虛擬夥伴。</b><br/>
-  透過 Raspberry Pi 與多種感測器，將真實植物的狀態同步到互動式網頁遊戲中。
-</p>
-
-<p align="center">
-  <img alt="Raspberry Pi" src="https://img.shields.io/badge/Raspberry%20Pi-IoT-C51A4A?logo=raspberrypi&logoColor=white">
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-Frontend-000000?logo=nextdotjs&logoColor=white">
-  <img alt="Flask" src="https://img.shields.io/badge/Flask-Backend-000000?logo=flask&logoColor=white">
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Web-3178C6?logo=typescript&logoColor=white">
-</p>
-
-<p align="center">
-  <img src="images/helloplant.JPG" width="820" alt="SmartPlant device">
-</p>
+# 智慧植物照護遊戲 SmartPlant game
+Iot final project
 
 ---
 
-# 中文版
+## 目錄
+1. [專案介紹](#專案介紹)
+2. [系統架構](#系統架構)
+3. [硬體設備與接線說明](#硬體設備與接線說明)
+4. [系統功能說明](#系統功能說明)
+5. [軟體環境](#軟體環境)
+6. [檔案結構說明](#檔案結構說明)
+7. [安裝與執行方式](#安裝與執行方式)
+8. [測試方式](#測試方式)
+9. [未來改進方向](#未來改進方向)
+
+---
 
 ## 專案介紹
+本專案為一套以 Raspberry Pi 為核心的智慧植物照護系統，
+透過多種感測器即時蒐集植物生長環境數據，
+並結合自動澆水互動式回饋機制。目的是可以類似複製一個植物的虛擬分身到遊戲裡，讓他在遊戲中回饋在現實中無法達到的互動及情緒價值。
+本系統主要應用於：
+- 初學者植物照護
+- 中小學自然科科教育互動
+- 遠距照顧植物者
+- IoT 與嵌入式系統學習
 
-SmartPlant 是一套以 Raspberry Pi 為核心的智慧植物互動系統。
+---
+**裝置圖片：**
 
-與一般只顯示溫度、濕度與土壤數值的智慧盆栽不同，本專案希望替真實植物建立一個「虛擬分身」。Raspberry Pi 會蒐集溫度、空氣濕度、土壤濕度、光照與觸碰等資訊，再由網頁將這些真實世界的訊號轉換成虛擬植物的狀態與情緒回饋。
+<p align="center">
+  <img src="images/helloplant.JPG" width="800">
+</p>
 
-主要互動包括：
-
-- 土壤乾燥時，虛擬植物會顯示口渴狀態
-- 觸碰真實植物時，虛擬植物會產生互動反應
-- 在網頁按下澆水按鈕後，實體水泵會啟動
-- 可直接從網頁觸發 Raspberry Pi Camera 拍照
-- 將真實感測資料轉換成虛擬植物的情緒狀態
-
-SmartPlant 不只是顯示感測數值，而是希望讓植物照護變得更有互動感與情緒連結。
-
-> **一個屬於真實植物的虛擬寵物。**
 
 ---
 
-## 展示影片
-
+**demo影片：**
 <p align="center">
   <a href="https://youtu.be/a2GsV1feKWs">
-    <img src="images/video.jpg" width="820" alt="SmartPlant demo video">
+    <img src="images/video.jpg" width="800">
   </a>
 </p>
 
-點擊上方圖片即可觀看 Demo。
-
----
-
-## 主要功能
-
-| 功能 | 說明 |
-|---|---|
-| 環境感測 | 使用 DHT22 讀取溫度與空氣濕度 |
-| 土壤監測 | 使用土壤濕度感測器偵測乾濕狀態 |
-| 光照感測 | 使用 BH1750 量測環境光照 |
-| 觸碰互動 | 使用 TTP223 偵測植物被觸碰 |
-| 遠端澆水 | 網頁 → Raspberry Pi → Relay → 12V 水泵 |
-| 澆水保護 | 每日澆水上限與冷卻時間 |
-| 植物情緒系統 | 將感測資料轉換成口渴、開心、滿足、興奮等狀態 |
-| 相機控制 | 從網頁觸發 Raspberry Pi Camera 拍照 |
-| API 保護 | 澆水與拍照功能需通過 API Key 驗證 |
-| 互動式網頁 | Next.js 介面與實體感測資料同步 |
 
 ---
 
 ## 系統架構
-
 ```text
-┌─────────────────────────┐
-│     Browser / Web UI    │
-│     Next.js + React     │
-└────────────┬────────────┘
-             │ HTTP / REST API
-             ▼
-┌─────────────────────────┐
-│      Flask Backend      │
-│      Raspberry Pi 4     │
-└────────────┬────────────┘
-             │
-     ┌───────┼───────────────┐
-     ▼       ▼               ▼
-  Sensors   Relay          Camera
-     │       │               │
-     ▼       ▼               ▼
-   Plant   Water Pump      Photos
+[ Browser (Next.js) ]
+        |
+        | HTTP (REST API)
+        v
+[ Flask Backend (Raspberry Pi) ]
+        |
+        |-- Sensors (GPIO / I2C)
+        |-- Relay Control
+        |-- Camera (libcamera)
+        v
+[ Physical World ]
+        |-- Plant
+        |-- Soil
+        |-- Water Pump
 ```
-
-前端透過 Flask REST API 讀取 Raspberry Pi 的感測資料，並將真實世界的狀態轉換成虛擬植物的互動狀態。使用者也可以透過網頁反向控制實體裝置，例如啟動水泵或相機。
-
 ---
 
-## 硬體設備
+## 硬體設備與接線說明
+本系統使用之主要硬體設備如下：
 
 - Raspberry Pi 4
-- DHT22 溫溼度感測器
-- Soil Moisture Sensor 土壤濕度感測器
-- BH1750 光照感測器
-- TTP223 觸控感測器
-- FL-3FF-S-Z 繼電器模組
-- 12V DC 水泵
-- Raspberry Pi Camera
+- 溫溼度感測器 DHT22
+- 土壤濕度感測器 Soil Moisture Sensor (DO)
+- 光照感測器 BH1750
+- 觸控感測器 TTP223
+- 繼電器模組 FL-3FF-S-Z
+- 水泵 12V pump
+- 攝影機模組 Raspberry Pi Camera
 
-### 線路圖
+各感測器皆透過 GPIO 腳位與 Raspberry Pi 連接，
+電源統一由 3.3V 或 5V 提供，並共用GND。
 
-<p align="center">
-  <img src="images/howtoelectric.PNG" width="820" alt="SmartPlant wiring diagram">
-</p>
+**線路圖：**
+![線路圖](images/howtoelectric.PNG)
 
-### 接線表
-
-| 功能 | 元件 | GPIO (BCM) | 實體腳位 | 電源 | GND | 備註 |
-|---|---|---:|---:|---|---|---|
-| 溫溼度感測 | DHT22 | GPIO4 | Pin 7 | 3.3V | GND | 單線通訊 |
-| 土壤濕度感測 | Soil Moisture Sensor (DO) | GPIO17 | Pin 11 | 3.3V | GND | 數位乾濕輸出 |
-| 光照感測 | BH1750 | GPIO2 / GPIO3 | Pin 3 / 5 | 3.3V | GND | I2C |
-| 觸碰感測 | TTP223 | GPIO22 | Pin 15 | 3.3V | GND | 觸碰時輸出 HIGH |
-| 繼電器控制 | FL-3FF-S-Z | GPIO27 | Pin 13 | 5V | GND | Active-low |
-| 水泵 | 12V DC Pump | Relay 控制 | — | 外接 12V | 共地 | 不可直接接 GPIO |
-| 攝影機 | Raspberry Pi Camera | CSI | 排線 | — | — | 使用 CSI 介面 |
+**接線表：**
+| 功能 | 元件 | GPIO 腳位（BCM） | 實體腳位（J8） | 電源 | GND | 備註 |
+|---|---|---|---|---|---|---|
+| 溫溼度感測 | DHT22 | GPIO4 | Pin 7 | 3.3V | GND | 單線通訊，需上拉電阻 |
+| 土壤濕度感測 | Soil Moisture Sensor（DO） | GPIO17 | Pin 11 | 3.3V | GND | 數位輸出，高/低代表乾濕 |
+| 光照感測 | BH1750 | GPIO2 (SDA) / GPIO3 (SCL) | Pin 3 / 5 | 3.3V | GND | I2C 裝置 |
+| 觸控感測 | TTP223 | GPIO22 | Pin 15 | 3.3V | GND | 觸碰輸出 HIGH |
+| 繼電器控制 | Relay 模組（FL-3FF-S-Z） | GPIO27 | Pin 13 | 5V | GND | Active-Low 觸發 |
+| 水幫浦 | 12V DC Pump | 由 Relay 控制 | - | 外接 12V | 共地 | 不可直接接 GPIO |
+| 攝影機 | Raspberry Pi Camera | CSI 介面 | 排線 | 3.3V | - | 非 GPIO，使用 CSI |
 
 ---
 
-## 技術架構
+## 系統功能說明
+系統主要功能包括：
+- 即時感測
+  - 溫度 / 空氣濕度（DHT11）
+  - 土壤濕度（Soil Moisture Sensor）
+  - 光照強度（BH1750 I2C）
+  - 觸控互動（Touch Sensor）
 
-### 後端
+- 實體澆水控制
+  - Web 按鈕 → Raspberry Pi → Relay → 12V 水幫浦
+  - 具備每日澆水上限與冷卻時間（Cooldown）
+  - 互動式前端介面
 
+- 植物情緒狀態（口渴 / 開心 / 滿足 / 興奮）
+  - 澆水動畫、觸控加分、滿意度系統
+  - Web UI 與實體感測同步
+
+- 相機拍照功能
+  - Raspberry Pi Camera Module
+  - 從前端觸發拍照並顯示照片
+
+- API Key 保護
+  - 澆水 / 拍照 API 需驗證金鑰
+
+---
+
+## 軟體環境
+Backend（Raspberry Pi）
 - Python 3.11+
 - Flask
 - RPi.GPIO
@@ -137,8 +131,7 @@ SmartPlant 不只是顯示感測數值，而是希望讓植物照護變得更有
 - Flask-CORS
 - python-dotenv
 
-### 前端
-
+Frontend
 - Next.js (App Router)
 - React
 - TypeScript
@@ -146,8 +139,7 @@ SmartPlant 不只是顯示感測數值，而是希望讓植物照護變得更有
 
 ---
 
-## 專案結構
-
+## 檔案結構說明
 ```text
 smartplant/
 ├── backend/
@@ -165,16 +157,8 @@ smartplant/
 │
 └── README.md
 ```
-
----
-
-## 安裝與執行
-
-### 1. 環境變數
-
-請在後端建立自己的 `.env` 檔案。
-
-```env
+環境變數設定：
+```text
 MOCK_SENSORS=0
 PUMP_MOCK=0
 
@@ -186,226 +170,180 @@ DHT_PIN=4
 DAILY_LIMIT_SEC=30
 COOLDOWN_SEC=60
 ```
-
-> 請勿將真實 API Key 上傳到公開 Repository。
-
-### 2. 後端
-
-```bash
+---
+## 安裝與執行方式
+```text
+Backend（Raspberry Pi）
 cd backend
-
 python -m venv .venv
 source .venv/bin/activate
-
 pip install -r requirements.txt
 python app.py
 ```
-
-### 3. 前端
-
-```bash
+Frontend
+```text
 cd frontend
-
 npm install
 npm run dev
 ```
-
 ---
-
-## API 範例
-
-### 查看感測狀態
-
-```bash
-curl http://<PI_IP>:8000/status
-```
-
-### 觸發澆水
-
-```bash
-curl -X POST http://<PI_IP>:8000/water \
-  -H "x-api-key: YOUR_KEY" \
-  -d "sec=2"
-```
-
-### 拍照
-
-```bash
-curl -X POST http://<PI_IP>:8000/camera/capture \
+## 測試方式
+1. 測試api
+- 查看感測狀態
+   ```text
+   curl http://<PI_IP>:8000/status
+   ```
+- 觸發澆水
+   ```text
+   curl -X POST http://<PI_IP>:8000/water \
+   -H "x-api-key: YOUR_KEY" \
+   -d "sec=2"
+   ```
+- 拍照
+  ```text
+  curl -X POST http://<PI_IP>:8000/camera/capture \
   -H "x-api-key: YOUR_KEY"
-```
+  ```
+2. 測試檔用途
 
+| 檔名 | 功能說明 | 測試內容 | 備註 |
+|------|------|------|------|
+| `test_dht22.py` | 測試 DHT22 溫溼度感測器 | 讀取空氣溫度（°C）與濕度（%），確認感測器供電與資料傳輸正常 | 偶爾出現 checksum error 屬正常現象 |
+| `test_pump.py` | 測試水幫浦 / 繼電器控制流程 | GPIO 設為 OUTPUT 啟動幫浦，維持短時間後釋放為 INPUT | 確認幫浦不會上電即持續運轉 |
+| `test_relay.py` | 測試繼電器 HIGH / LOW 切換 | 手動切換 GPIO HIGH / LOW，觀察繼電器吸合與釋放 | 可聽到繼電器「喀」聲 |
+| `test_soil_do.py` | 測試土壤濕度感測器（DO） | 讀取 DO 腳位，高低電位代表乾燥 / 潮濕狀態 | 使用 DO 腳位，不需 ADC |
+
+   
 ---
-
-## 硬體測試
-
-| 檔名 | 用途 | 測試內容 |
-|---|---|---|
-| `test_dht22.py` | DHT22 感測器測試 | 讀取溫度與濕度 |
-| `test_pump.py` | 水泵 / Relay 控制 | 短時間啟動水泵並安全釋放 GPIO |
-| `test_relay.py` | Relay 切換測試 | 測試 HIGH / LOW 切換 |
-| `test_soil_do.py` | 土壤感測器測試 | 讀取數位乾濕狀態 |
-
----
-
-## 為什麼做這個專案？
-
-大多數智慧植物專案著重在感測器數據與監控儀表板，但 SmartPlant 想探索另一個方向：
-
-**如果植物能用虛擬角色表達自己的狀態呢？**
-
-透過將實體感測資料轉換成虛擬角色，本專案結合了：
-
-**IoT + 嵌入式系統 + Web 開發 + 人機互動 + 遊戲化回饋**
-
-可能的應用方向包括：
-
-- 植物照護初學者
-- 中小學自然科互動學習
-- 遠距植物照護
-- IoT 與嵌入式系統教學
-- 數位分身與虛擬寵物應用
-
----
-
 ## 未來改進方向
-
-- [ ] 使用 ADC 將土壤濕度改為類比量測
-- [ ] 顯示土壤濕度百分比
-- [ ] 支援不同植物的濕度需求設定
-- [ ] 改善 Relay 硬體與控制穩定性
-- [ ] 分析 Raspberry Pi Camera 拍攝的植物影像
-- [ ] 辨識葉片顏色與枯萎狀態
-- [ ] 結合影像與感測器資料進行植物健康評估
-- [ ] 擴充虛擬植物動畫與情緒系統
+1. 我使用的土壤濕度計是DO數位輸出，這樣只能感測到乾與濕的切換。可以加上ADC換成AO類比輸出，可以測量土壤濕度的百分比進而用來透過程式調整不同植物喜好土壤濕度
+2. 我使用的relay無法透過程式調整LOW/HIGH，最後是透過調整GPIO IN/OUT解決的。建議可能可以買好一點的繼電器模組。
+3. 可嘗試結合 Raspberry Pi Camera 所拍攝的影像，
+- 利用影像辨識判斷葉片顏色或枯萎狀態
+- 結合感測器資料進行植物健康評估
 
 ---
-
 ## 參考資料
-
-1. Raspberry Pi Powered IoT Garden — Instructables  
-   https://www.instructables.com/Raspberry-Pi-Powered-IOT-Garden/
-
-2. Building Smarter Farming Irrigation with Raspberry Pi and IoT — Raspberry Pi Foundation  
-   https://www.raspberrypi.com/news/building-smarter-farming-irrigation-with-raspberry-pi-and-iot/
-
-3. The Application of Touch Sensor — YouTube  
-   https://www.youtube.com/watch?v=wPbU09bvwr0
+1. Raspberry Pi Powered IoT Garden. Instructables, 2024.  
+https://www.instructables.com/Raspberry-Pi-Powered-IOT-Garden/
+2. Building Smarter Farming Irrigation with Raspberry Pi and IoT. Raspberry Pi Foundation, 2023.  
+https://www.raspberrypi.com/news/building-smarter-farming-irrigation-with-raspberry-pi-and-iot/
+3. The Application of Touch Sensor. YouTube Video, ID: wPbU09bvwr0.  
+https://www.youtube.com/watch?v=wPbU09bvwr0
 
 ---
 
 # English Version
 
-## Overview
-
-SmartPlant is a Raspberry Pi based interactive plant-care system that turns a physical plant into a **digital companion**.
-
-Unlike typical smart-plant projects that mainly display sensor values, SmartPlant mirrors the condition of a real plant into an interactive web experience. Raspberry Pi collects temperature, humidity, soil moisture, ambient light, and touch data, then translates those signals into visible moods and reactions.
-
-Main interactions include:
-
-- Dry soil makes the virtual plant appear thirsty
-- Touching the real plant triggers a reaction in the virtual plant
-- Pressing the watering button in the web UI activates the real water pump
-- The Raspberry Pi Camera can be triggered directly from the browser
-- Real-world sensor data is converted into virtual emotional states
-
-SmartPlant aims to make plant care feel more interactive and emotionally engaging.
-
-> **A real-world Tamagotchi for plants.**
+## Table of Contents
+1. [Project Introduction](#project-introduction)
+2. [System Architecture](#system-architecture)
+3. [Hardware and Wiring](#hardware-and-wiring)
+4. [System Features](#system-features)
+5. [Software Environment](#software-environment)
+6. [Project Structure](#project-structure)
+7. [Installation and Setup](#installation-and-setup)
+8. [Testing](#testing)
+9. [Future Improvements](#future-improvements)
 
 ---
 
-## Demo
+## Project Introduction
+This project is a smart plant-care system built around Raspberry Pi.
 
-<p align="center">
-  <a href="https://youtu.be/a2GsV1feKWs">
-    <img src="images/video.jpg" width="820" alt="SmartPlant demo video">
-  </a>
-</p>
+It collects real-time environmental data through multiple sensors and combines the data with automatic watering and interactive feedback. The goal is to create a virtual counterpart of a real plant inside a game, allowing the plant to provide forms of interaction and emotional feedback that are difficult to achieve in the physical world.
 
-Click the image above to watch the demo.
-
----
-
-## Features
-
-| Feature | Description |
-|---|---|
-| Environment sensing | Temperature and air humidity via DHT22 |
-| Soil monitoring | Detects dry/wet soil using a soil moisture sensor |
-| Light sensing | Measures ambient light with BH1750 |
-| Touch interaction | TTP223 lets the physical plant respond to touch |
-| Remote watering | Browser → Raspberry Pi → Relay → 12V pump |
-| Watering protection | Daily watering limit and cooldown |
-| Plant mood system | Thirsty, happy, satisfied, excited and other states |
-| Camera control | Trigger photos using Raspberry Pi Camera |
-| Protected actions | Watering and camera APIs require an API key |
-| Interactive web UI | Next.js interface synchronized with physical sensors |
+Main use cases include:
+- Beginner-friendly plant care
+- Interactive science education
+- Remote plant care
+- IoT and embedded systems learning
 
 ---
 
-## How It Works
-
+## System Architecture
 ```text
-┌─────────────────────────┐
-│     Browser / Web UI    │
-│     Next.js + React     │
-└────────────┬────────────┘
-             │ HTTP / REST API
-             ▼
-┌─────────────────────────┐
-│      Flask Backend      │
-│      Raspberry Pi 4     │
-└────────────┬────────────┘
-             │
-     ┌───────┼───────────────┐
-     ▼       ▼               ▼
-  Sensors   Relay          Camera
-     │       │               │
-     ▼       ▼               ▼
-   Plant   Water Pump      Photos
+[ Browser (Next.js) ]
+        |
+        | HTTP (REST API)
+        v
+[ Flask Backend (Raspberry Pi) ]
+        |
+        |-- Sensors (GPIO / I2C)
+        |-- Relay Control
+        |-- Camera (libcamera)
+        v
+[ Physical World ]
+        |-- Plant
+        |-- Soil
+        |-- Water Pump
 ```
 
-The frontend reads sensor data through the Flask REST API and converts physical signals into virtual plant states. User actions from the browser can also affect the physical device, such as activating the water pump or taking a photo.
-
 ---
 
-## Hardware
+## Hardware and Wiring
+
+Main hardware components:
 
 - Raspberry Pi 4
 - DHT22 temperature / humidity sensor
-- Soil Moisture Sensor
+- Soil Moisture Sensor (DO)
 - BH1750 light sensor
 - TTP223 touch sensor
 - FL-3FF-S-Z relay module
-- 12V DC water pump
+- 12V water pump
 - Raspberry Pi Camera
 
 ### Wiring Diagram
 
-<p align="center">
-  <img src="images/howtoelectric.PNG" width="820" alt="SmartPlant wiring diagram">
-</p>
+![Wiring Diagram](images/howtoelectric.PNG)
 
 ### Wiring Table
 
 | Function | Component | GPIO (BCM) | Physical Pin | Power | GND | Notes |
-|---|---|---:|---:|---|---|---|
-| Temperature / humidity | DHT22 | GPIO4 | Pin 7 | 3.3V | GND | Single-wire communication |
+|---|---|---|---|---|---|---|
+| Temperature / humidity | DHT22 | GPIO4 | Pin 7 | 3.3V | GND | Single-wire communication, pull-up resistor required |
 | Soil moisture | Soil Moisture Sensor (DO) | GPIO17 | Pin 11 | 3.3V | GND | Digital dry/wet output |
-| Light | BH1750 | GPIO2 / GPIO3 | Pin 3 / 5 | 3.3V | GND | I2C |
-| Touch | TTP223 | GPIO22 | Pin 15 | 3.3V | GND | HIGH when touched |
-| Relay | FL-3FF-S-Z | GPIO27 | Pin 13 | 5V | GND | Active-low |
-| Water pump | 12V DC Pump | Relay controlled | — | External 12V | Common GND | Do not connect directly to GPIO |
-| Camera | Raspberry Pi Camera | CSI | Ribbon cable | — | — | Uses CSI instead of GPIO |
+| Light | BH1750 | GPIO2 (SDA) / GPIO3 (SCL) | Pin 3 / 5 | 3.3V | GND | I2C device |
+| Touch | TTP223 | GPIO22 | Pin 15 | 3.3V | GND | Outputs HIGH when touched |
+| Relay control | FL-3FF-S-Z Relay | GPIO27 | Pin 13 | 5V | GND | Active-Low trigger |
+| Water pump | 12V DC Pump | Relay controlled | - | External 12V | Common GND | Do not connect directly to GPIO |
+| Camera | Raspberry Pi Camera | CSI | Ribbon cable | 3.3V | - | Uses CSI instead of GPIO |
 
 ---
 
-## Tech Stack
+## System Features
 
-### Backend
+Main features include:
 
+- Real-time sensing
+  - Temperature / air humidity
+  - Soil moisture
+  - Ambient light
+  - Touch interaction
+
+- Physical watering control
+  - Web button → Raspberry Pi → Relay → 12V water pump
+  - Daily watering limit and cooldown protection
+  - Interactive frontend interface
+
+- Plant emotional states
+  - Thirsty / happy / satisfied / excited
+  - Watering animations, touch score, and satisfaction system
+  - Web UI synchronized with physical sensor data
+
+- Camera
+  - Raspberry Pi Camera Module
+  - Capture and display photos from the frontend
+
+- API Key protection
+  - Watering and camera APIs require authentication
+
+---
+
+## Software Environment
+
+Backend (Raspberry Pi)
 - Python 3.11+
 - Flask
 - RPi.GPIO
@@ -413,8 +351,7 @@ The frontend reads sensor data through the Flask REST API and converts physical 
 - Flask-CORS
 - python-dotenv
 
-### Frontend
-
+Frontend
 - Next.js (App Router)
 - React
 - TypeScript
@@ -442,15 +379,9 @@ smartplant/
 └── README.md
 ```
 
----
+Environment variables:
 
-## Setup
-
-### 1. Environment Variables
-
-Create your own `.env` file for the backend.
-
-```env
+```text
 MOCK_SENSORS=0
 PUMP_MOCK=0
 
@@ -463,117 +394,83 @@ DAILY_LIMIT_SEC=30
 COOLDOWN_SEC=60
 ```
 
-> Never commit a real API key to a public repository.
+---
 
-### 2. Backend
+## Installation and Setup
 
-```bash
+Backend:
+
+```text
 cd backend
-
 python -m venv .venv
 source .venv/bin/activate
-
 pip install -r requirements.txt
 python app.py
 ```
 
-### 3. Frontend
+Frontend:
 
-```bash
+```text
 cd frontend
-
 npm install
 npm run dev
 ```
 
 ---
 
-## API Examples
+## Testing
 
-### Read sensor status
+### API Testing
 
-```bash
+Check sensor status:
+
+```text
 curl http://<PI_IP>:8000/status
 ```
 
-### Water the plant
+Trigger watering:
 
-```bash
+```text
 curl -X POST http://<PI_IP>:8000/water \
-  -H "x-api-key: YOUR_KEY" \
-  -d "sec=2"
+-H "x-api-key: YOUR_KEY" \
+-d "sec=2"
 ```
 
-### Capture a photo
+Capture a photo:
 
-```bash
+```text
 curl -X POST http://<PI_IP>:8000/camera/capture \
-  -H "x-api-key: YOUR_KEY"
+-H "x-api-key: YOUR_KEY"
 ```
 
----
+### Test Files
 
-## Hardware Tests
-
-| File | Purpose | Test |
-|---|---|---|
-| `test_dht22.py` | DHT22 sensor test | Reads temperature and humidity |
-| `test_pump.py` | Pump / relay control | Starts the pump briefly and safely releases GPIO |
-| `test_relay.py` | Relay switching | Verifies HIGH / LOW relay behavior |
-| `test_soil_do.py` | Soil sensor | Reads digital dry / wet state |
+| File | Purpose | Test | Notes |
+|---|---|---|---|
+| `test_dht22.py` | Test DHT22 sensor | Reads temperature and humidity | Occasional checksum errors may occur |
+| `test_pump.py` | Test pump / relay control | Starts the pump briefly and releases GPIO | Helps prevent the pump from staying on at boot |
+| `test_relay.py` | Test relay switching | Manually switches GPIO HIGH / LOW | Relay click can be heard |
+| `test_soil_do.py` | Test soil sensor | Reads digital dry / wet state | Uses DO output, no ADC required |
 
 ---
 
-## Why This Project?
+## Future Improvements
 
-Most smart-plant projects focus on dashboards and sensor values.
-
-SmartPlant explores a different idea:
-
-**What if the plant could express how it feels?**
-
-By turning physical sensor data into a virtual character, the project combines:
-
-**IoT + Embedded Systems + Web Development + Human-Computer Interaction + Game-like Feedback**
-
-Potential use cases include:
-
-- Beginner-friendly plant care
-- Interactive science education
-- Remote plant monitoring
-- IoT and embedded-system learning
-- Digital twin / virtual-pet experiments
-
----
-
-## Roadmap
-
-- [ ] Replace digital soil sensing with analog measurement through an ADC
-- [ ] Show soil moisture as a percentage
-- [ ] Support moisture thresholds for different plant species
-- [ ] Improve relay hardware and control reliability
-- [ ] Analyze plant images from the Raspberry Pi Camera
-- [ ] Detect leaf color or wilting
-- [ ] Combine image and sensor data for plant-health estimation
-- [ ] Expand the virtual plant's animation and emotion system
+1. Replace the current digital soil-moisture measurement with analog measurement through an ADC, allowing moisture percentage readings and plant-specific moisture thresholds.
+2. Improve relay hardware and control reliability.
+3. Combine Raspberry Pi Camera images with sensor data:
+   - Detect leaf color or wilting
+   - Estimate plant health using both image and sensor information
 
 ---
 
 ## References
 
-1. Raspberry Pi Powered IoT Garden — Instructables  
-   https://www.instructables.com/Raspberry-Pi-Powered-IOT-Garden/
+1. Raspberry Pi Powered IoT Garden. Instructables, 2024.  
+https://www.instructables.com/Raspberry-Pi-Powered-IOT-Garden/
 
-2. Building Smarter Farming Irrigation with Raspberry Pi and IoT — Raspberry Pi Foundation  
-   https://www.raspberrypi.com/news/building-smarter-farming-irrigation-with-raspberry-pi-and-iot/
+2. Building Smarter Farming Irrigation with Raspberry Pi and IoT. Raspberry Pi Foundation, 2023.  
+https://www.raspberrypi.com/news/building-smarter-farming-irrigation-with-raspberry-pi-and-iot/
 
-3. The Application of Touch Sensor — YouTube  
-   https://www.youtube.com/watch?v=wPbU09bvwr0
-
----
-
-## Support
-
-If you find SmartPlant interesting, feel free to **Star this repository**.
-
-It helps more people discover the project and supports future improvements.
+3. The Application of Touch Sensor. YouTube Video, ID: wPbU09bvwr0.  
+https://www.youtube.com/watch?v=wPbU09bvwr0
